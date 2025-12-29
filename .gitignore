@@ -1,0 +1,18 @@
+# Build outputs
+build/
+*.ipk
+*.zip
+
+# Development
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.swp
+*~
