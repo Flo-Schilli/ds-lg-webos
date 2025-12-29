@@ -5,7 +5,7 @@
 
 // Configuration - IMPORTANT: Replace with your actual SPA URL before deployment
 // This is the primary configuration point for the application
-const SPA_URL = 'https://your-spa-url.com';
+const SPA_URL = 'http://localhost:5173';
 
 /**
  * Generate or retrieve a persistent UUID for this device
