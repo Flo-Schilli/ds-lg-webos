@@ -21,7 +21,7 @@
                     );
                     
                     request.onservicecallback = function(inResponse) {
-                        var response = JSON.parse(inResponse);
+                        var response = typeof inResponse === 'string' ? JSON.parse(inResponse) : inResponse;
                         if (response.returnValue) {
                             successCallback({
                                 modelName: response.modelName || 'LG-WebOS-TV',

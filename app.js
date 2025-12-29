@@ -3,7 +3,8 @@
  * This application forwards to a hosted SPA with device identifier and UUID parameters
  */
 
-// Configuration - Replace with your actual SPA URL
+// Configuration - IMPORTANT: Replace with your actual SPA URL before deployment
+// This is the primary configuration point for the application
 const SPA_URL = 'https://your-spa-url.com';
 
 /**
@@ -42,12 +43,8 @@ function getDeviceIdentifier(callback) {
                 console.log('Device info:', device);
                 
                 // Try to get the device ID (may vary based on WebOS version)
+                // Priority: modelName > serialNumber > sdkVersion
                 let deviceId = device.modelName || device.serialNumber || device.sdkVersion || 'unknown';
-                
-                // Also try to get more specific identifiers
-                if (device.UHD) {
-                    deviceId = device.UHD;
-                }
                 
                 callback(deviceId);
             }, function(error) {
