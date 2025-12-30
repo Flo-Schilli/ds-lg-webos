@@ -67,10 +67,17 @@ function getDeviceIdentifier(callback) {
  */
 function buildTargetUrl(deviceId, uuid) {
     const url = new URL(SPA_URL);
+
+    const customName = localStorage.getItem('custom_device_name');
+
     url.searchParams.append('deviceId', deviceId);
     url.searchParams.append('uuid', uuid);
     url.searchParams.append('backend', 'GarlicHub');
-    
+
+    if (customName) {
+        url.searchParams.append('deviceName', customName);
+    }
+
     console.log('Target URL:', url.toString());
     return url.toString();
 }
