@@ -15,18 +15,18 @@
                 // Try to use the native webOS API if available
                 if (window.WebOSServiceBridge) {
                     var bridge = new WebOSServiceBridge();
-                    var url = 'luna://com.webos.service.systemservice/deviceInfo/query';
-                    var params = '{}';
+                    var url = 'luna://com.webos.service.tv.systemproperty/getSystemInfo';
+                    var params = '{"keys": ["modelName", "boardType", "sdkVersion", "firmwareVersion", "UHD"]}';
 
                     bridge.onservicecallback = function(inResponse) {
                         var response = typeof inResponse === 'string' ? JSON.parse(inResponse) : inResponse;
                         if (response.returnValue) {
                             successCallback({
-                                modelName: response.device_name || 'LG-WebOS-TV',
-                                serialNumber: response.serial_number,
-                                deviceId: response.device_id,
-                                ethernet_mac: response.wired_addr,
-                                wifi_mac: response.wifi_addr
+                                modelName: response.modelName || 'LG-WebOS-TV',
+                                boardType: response.boardType,
+                                sdkVersion: response.sdkVersion,
+                                firmwareVersion: response.firmwareVersion,
+                                UHD: response.UHD
                             });
                         } else {
                             failureCallback(response);
