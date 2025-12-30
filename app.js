@@ -69,6 +69,7 @@ function buildTargetUrl(deviceId, uuid) {
     const url = new URL(SPA_URL);
     url.searchParams.append('deviceId', deviceId);
     url.searchParams.append('uuid', uuid);
+    url.searchParams.append('backend', 'GarlicHub');
     
     console.log('Target URL:', url.toString());
     return url.toString();
